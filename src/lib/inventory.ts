@@ -1,7 +1,13 @@
 // src/lib/inventory.ts
 import inventoryData from "@/data/inventory.json";
 
-export type InventoryStatus = "available" | "reserved" | "sold";
+/**
+ * 在庫ステータス
+ * - "stock": 在庫あり
+ * - "sold": 成約済み
+ * - "coming_soon": 仕入れ予定・準備中
+ */
+export type InventoryStatus = "stock" | "sold" | "coming_soon";
 
 export type InventoryItem = {
   id: string;

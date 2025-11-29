@@ -49,10 +49,10 @@ export default function HomePage() {
                 #在庫車一覧
               </span>
               <span className="rounded-full border border-red-500/30 px-3 py-1 bg-black/40">
-                #ガレージ情報
+                #輸入車と国産車
               </span>
               <span className="rounded-full border border-red-500/30 px-3 py-1 bg-black/40">
-                #スタッフ常駐
+                #ガレージ情報
               </span>
             </div>
           </div>
@@ -73,7 +73,7 @@ export default function HomePage() {
               夜のショップ風景
             </h2>
             <p className="mt-3 text-[13px] leading-relaxed text-neutral-200/85">
-              夜間にガレージ内に並ぶ輸入車と国産車のレイアウトを基準にした照明計画や展示スタイルのイメージ
+              夜間にガレージ内に並ぶ車両レイアウトと照明計画を前提にした展示スタイルのイメージ
             </p>
           </article>
 
@@ -86,7 +86,7 @@ export default function HomePage() {
               昼のガレージ風景
             </h2>
             <p className="mt-3 text-[13px] leading-relaxed text-neutral-200/85">
-              日中に来店するユーザー層と動線を前提にした車両配置とガレージ内の使い方のイメージ
+              日中に来店するユーザー層と動線を基準にした車両配置とガレージ内の使い方のイメージ
             </p>
           </article>
         </section>
@@ -104,7 +104,7 @@ export default function HomePage() {
             </li>
             <li className="flex gap-2">
               <span className="mt-[4px] h-[6px] w-[6px] rounded-full bg-red-500" />
-              <span>軽トラから高級車までを同じ条件で比較</span>
+              <span>軽トラから高級車までを統一条件で比較</span>
             </li>
             <li className="flex gap-2">
               <span className="mt-[4px] h-[6px] w-[6px] rounded-full bg-red-500" />

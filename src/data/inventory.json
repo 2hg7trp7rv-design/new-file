@@ -1,0 +1,21 @@
+[
+  {
+    "id": "sample-ferrari-f355",
+    "title": "Ferrari F355 Berlinetta",
+    "maker": "Ferrari",
+    "category": "import",
+    "grade": "Berlinetta",
+    "year": 1997,
+    "mileageKm": 42000,
+    "color": "ロッソコルサ",
+    "priceYen": 14980000,
+    "transmission": "6MT",
+    "drive": "MR",
+    "image": "/images/inventory/sample-ferrari-f355.jpg",
+    "status": "stock",
+    "tags": ["フェラーリ", "V8", "ネオクラシック"],
+    "catchCopy": "夜の国道を、テールランプの残像だけ残して消えるV8フェラーリ。",
+    "shortDescription": "ネオクラシックの代表格F355。現代の交通事情でも扱いやすいサイズ感と、跳ね馬らしい官能的なサウンドを両立した1台です。",
+    "lifestyleNote": "仕事を終えた金曜の夜。米子ICから山陰自動車道に乗り、海沿いの夜風を浴びながら3速全開。ガレージのシャッターを開けると、いなりちゃんが尻尾を振って出迎える。そんな『非日常と日常のちょうど真ん中』にいる相棒です。"
+  }
+]

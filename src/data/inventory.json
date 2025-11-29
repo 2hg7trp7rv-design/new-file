@@ -11,11 +11,7 @@
     "mileageKm": 3500,
     "color": "ブルー／ブラック",
     "status": "stock",
-    "tags": [
-      "ハイパーカー",
-      "W16",
-      "フレンチ"
-    ],
+    "tags": ["ハイパーカー", "W16", "フレンチ"],
     "thumbnailUrl": "/images/inventory/bugatti-chiron-01.jpg",
     "shortDescription": "8.0L W16クワッドターボを搭載するブガッティのフラッグシップモデル。",
     "lifestyleNote": "コレクションガレージでの保管を前提とした一台。高速走行はイベントや特別な日を想定。"
@@ -32,11 +28,7 @@
     "mileageKm": 2200,
     "color": "グレー／カーボン",
     "status": "stock",
-    "tags": [
-      "ハイパーカー",
-      "カーボン",
-      "限定車"
-    ],
+    "tags": ["ハイパーカー", "カーボン", "限定車"],
     "thumbnailUrl": "/images/inventory/bugatti-chiron-sport-01.jpg",
     "shortDescription": "軽量化とシャシー強化が施されたシロンのダイナミックバージョン。",
     "lifestyleNote": "サーキット走行イベントやヨーロッパツーリングを前提にした個体。日本国内保管。"
@@ -53,11 +45,7 @@
     "mileageKm": 1800,
     "color": "カーボン／レッドライン",
     "status": "stock",
-    "tags": [
-      "ハイパーカー",
-      "AMG V12",
-      "カーボンモノコック"
-    ],
+    "tags": ["ハイパーカー", "AMG V12", "カーボンモノコック"],
     "thumbnailUrl": "/images/inventory/pagani-huayra-bc-01.jpg",
     "shortDescription": "AMG製6.0L V12ツインターボを搭載する軽量トラックフォーカスモデル。",
     "lifestyleNote": "屋内保管前提。メンテナンスは専門工場での長期預かりを前提にスケジュールする前提。"
@@ -74,10 +62,7 @@
     "mileageKm": 500,
     "color": "シルバー／カーボン",
     "status": "coming_soon",
-    "tags": [
-      "ハイパーカー",
-      "最新モデル"
-    ],
+    "tags": ["ハイパーカー", "最新モデル"],
     "thumbnailUrl": "/images/inventory/pagani-utopia-01.jpg",
     "shortDescription": "ウアイラ後継として開発された最新世代パガーニ。",
     "lifestyleNote": "国際輸送を伴うイベント参加を想定。国内登録前提か、展示メインのコレクション用途かで運用が変わる。"
@@ -94,11 +79,7 @@
     "mileageKm": 800,
     "color": "ホワイト／オレンジ",
     "status": "stock",
-    "tags": [
-      "ハイパーカー",
-      "スウェーデン",
-      "トラック仕様"
-    ],
+    "tags": ["ハイパーカー", "スウェーデン", "トラック仕様"],
     "thumbnailUrl": "/images/inventory/koenigsegg-jesko-01.jpg",
     "shortDescription": "サーキット志向のエアロと高回転V8を組み合わせたケーニグセグの主力モデル。",
     "lifestyleNote": "サーキット走行やプライベートイベントでの使用を前提とした個体。公道走行は限定的な利用を想定。"
@@ -115,10 +96,7 @@
     "mileageKm": 2600,
     "color": "ブラック／カーボン",
     "status": "stock",
-    "tags": [
-      "ハイパーカー",
-      "ハイブリッド"
-    ],
+    "tags": ["ハイパーカー", "ハイブリッド"],
     "thumbnailUrl": "/images/inventory/koenigsegg-regera-01.jpg",
     "shortDescription": "シングルスピードダイレクトドライブを採用したハイブリッドハイパーカー。",
     "lifestyleNote": "長距離ツーリングよりも、短時間の高負荷走行とガレージ保管を前提とした所有スタイルを想定。"
@@ -135,11 +113,7 @@
     "mileageKm": 9000,
     "color": "ロッソコルサ",
     "status": "stock",
-    "tags": [
-      "ハイブリッド",
-      "V12",
-      "限定モデル"
-    ],
+    "tags": ["ハイブリッド", "V12", "限定モデル"],
     "thumbnailUrl": "/images/inventory/ferrari-laferrari-01.jpg",
     "shortDescription": "V12エンジンとハイブリッドシステムを組み合わせたフェラーリのフラッグシップモデル。",
     "lifestyleNote": "サーキットイベントやミーティング参加を中心に利用する前提。保管は空調付きガレージを推奨。"
@@ -156,11 +130,7 @@
     "mileageKm": 300,
     "color": "ロッソ／シルバー",
     "status": "coming_soon",
-    "tags": [
-      "限定モデル",
-      "V12",
-      "Icona"
-    ],
+    "tags": ["限定モデル", "V12", "Icona"],
     "thumbnailUrl": "/images/inventory/ferrari-daytona-sp3-01.jpg",
     "shortDescription": "Iconaシリーズとして設定されたV12ミッドシップの限定モデル。",
     "lifestyleNote": "イベント展示やコンクールデレガンス参加をメイン用途としたコレクション向け。"
@@ -177,10 +147,7 @@
     "mileageKm": 12000,
     "color": "イエロー",
     "status": "stock",
-    "tags": [
-      "ハイブリッド",
-      "限定モデル"
-    ],
+    "tags": ["ハイブリッド", "限定モデル"],
     "thumbnailUrl": "/images/inventory/mclaren-p1-01.jpg",
     "shortDescription": "マクラーレン初のハイブリッドハイパーカー。F1直系の技術を投入したモデル。",
     "lifestyleNote": "週末の短距離ドライブとイベント参加を想定。サーキット利用時は別途整備プランが必要。"
@@ -197,10 +164,7 @@
     "mileageKm": 7000,
     "color": "グレー／オレンジ",
     "status": "stock",
-    "tags": [
-      "トラックフォーカス",
-      "限定モデル"
-    ],
+    "tags": ["トラックフォーカス", "限定モデル"],
     "thumbnailUrl": "/images/inventory/mclaren-senna-01.jpg",
     "shortDescription": "空力性能を重視したサーキット志向のマクラーレン。",
     "lifestyleNote": "サーキット走行を前提としたセッティング。公道走行は移動メインの利用を想定。"
@@ -217,10 +181,7 @@
     "mileageKm": 4000,
     "color": "シルバー",
     "status": "stock",
-    "tags": [
-      "ハイパーGT",
-      "3シーター"
-    ],
+    "tags": ["ハイパーGT", "3シーター"],
     "thumbnailUrl": "/images/inventory/mclaren-speedtail-01.jpg",
     "shortDescription": "3座レイアウトを採用したハイパーGT。高速巡航性能に特化したモデル。",
     "lifestyleNote": "長距離高速ツーリングよりも、短距離での高速巡航デモンストレーション用途を想定。"
@@ -237,10 +198,7 @@
     "mileageKm": 1500,
     "color": "シルバー／ブラック",
     "status": "stock",
-    "tags": [
-      "F1由来",
-      "ハイブリッド"
-    ],
+    "tags": ["F1由来", "ハイブリッド"],
     "thumbnailUrl": "/images/inventory/mercedes-amg-one-01.jpg",
     "shortDescription": "F1パワーユニット技術を公道仕様に落とし込んだハイパーカー。",
     "lifestyleNote": "定期的な専門メンテナンスと低走行維持を前提とした所有向け。"
@@ -257,10 +215,7 @@
     "mileageKm": 3000,
     "color": "グリーン",
     "status": "stock",
-    "tags": [
-      "ハイブリッド",
-      "限定モデル"
-    ],
+    "tags": ["ハイブリッド", "限定モデル"],
     "thumbnailUrl": "/images/inventory/lamborghini-sian-01.jpg",
     "shortDescription": "スーパーキャパシタを採用したランボルギーニ初のハイブリッドモデル。",
     "lifestyleNote": "イベント展示と短距離ドライブ用を想定。屋内保管推奨。"
@@ -277,10 +232,7 @@
     "mileageKm": 8000,
     "color": "グレー／イエロー",
     "status": "sold",
-    "tags": [
-      "限定モデル",
-      "V12"
-    ],
+    "tags": ["限定モデル", "V12"],
     "thumbnailUrl": "/images/inventory/lamborghini-centenario-01.jpg",
     "shortDescription": "創業者生誕100周年を記念して生産された限定モデル。",
     "lifestyleNote": "成約済み車両の参考展示用データ。今後の仕入れ検討用の目安として掲載。"
@@ -297,10 +249,7 @@
     "mileageKm": 1500,
     "color": "グレー／グリーン",
     "status": "coming_soon",
-    "tags": [
-      "超限定",
-      "V12"
-    ],
+    "tags": ["超限定", "V12"],
     "thumbnailUrl": "/images/inventory/lamborghini-veneno-01.jpg",
     "shortDescription": "ごく少数のみ生産されたフラッグシップV12モデル。",
     "lifestyleNote": "国内外のコレクター向けに水面下での商談を想定した車両。詳細は個別相談が前提。"
@@ -317,10 +266,7 @@
     "mileageKm": 300,
     "color": "ブルー",
     "status": "stock",
-    "tags": [
-      "コーチビルド",
-      "超高額"
-    ],
+    "tags": ["コーチビルド", "超高額"],
     "thumbnailUrl": "/images/inventory/rolls-royce-boat-tail-01.jpg",
     "shortDescription": "コーチビルド部門が製作したボートテイルデザインの特注モデル。",
     "lifestyleNote": "ショーファードリブンとイベント展示の両方を想定した運用。専用ガレージと専任管理者のいる環境向け。"
@@ -337,10 +283,7 @@
     "mileageKm": 1200,
     "color": "シルバー",
     "status": "stock",
-    "tags": [
-      "コーチビルド",
-      "ワンオフ"
-    ],
+    "tags": ["コーチビルド", "ワンオフ"],
     "thumbnailUrl": "/images/inventory/rolls-royce-sweptail-01.jpg",
     "shortDescription": "オーナー要望に合わせて一点製作されたコーチビルドモデル。",
     "lifestyleNote": "展示と限定的な走行を前提にした車両。維持には専門チームとの連携が必要。"
@@ -357,10 +300,7 @@
     "mileageKm": 900,
     "color": "グリーン",
     "status": "stock",
-    "tags": [
-      "F1由来",
-      "V12"
-    ],
+    "tags": ["F1由来", "V12"],
     "thumbnailUrl": "/images/inventory/aston-martin-valkyrie-01.jpg",
     "shortDescription": "レッドブル・レーシングと共同開発されたF1由来技術を持つハイパーカー。",
     "lifestyleNote": "サーキットイベントでの利用を主用途とし、公道は限定的な走行を想定。"
@@ -377,11 +317,7 @@
     "mileageKm": 200,
     "color": "グレー",
     "status": "stock",
-    "tags": [
-      "限定モデル",
-      "MT",
-      "V12"
-    ],
+    "tags": ["限定モデル", "MT", "V12"],
     "thumbnailUrl": "/images/inventory/aston-martin-valour-01.jpg",
     "shortDescription": "V12＋MTという組み合わせを持つ限定スポーツモデル。",
     "lifestyleNote": "公道ドライブ向け。ワインディングロード中心の使用を想定し、距離を抑えた維持を前提とする。"
@@ -398,10 +334,7 @@
     "mileageKm": 8000,
     "color": "ホワイト",
     "status": "stock",
-    "tags": [
-      "ハイブリッド",
-      "限定モデル"
-    ],
+    "tags": ["ハイブリッド", "限定モデル"],
     "thumbnailUrl": "/images/inventory/porsche-918-spyder-01.jpg",
     "shortDescription": "ハイブリッドシステムを搭載したポルシェのフラッグシップスーパーカー。",
     "lifestyleNote": "ワインディングとサーキットをバランスよく楽しむスタイルを想定。保管は屋内ガレージ推奨。"
@@ -418,10 +351,7 @@
     "mileageKm": 2500,
     "color": "ブルー／グレー",
     "status": "stock",
-    "tags": [
-      "限定モデル",
-      "トラックフォーカス"
-    ],
+    "tags": ["限定モデル", "トラックフォーカス"],
     "thumbnailUrl": "/images/inventory/bugatti-divo-01.jpg",
     "shortDescription": "シロンをベースにコーナリング性能を重視して仕立てた限定モデル。",
     "lifestyleNote": "サーキットイベントや海外ツアーでの利用を想定。輸送込みの運用計画が前提となる。"
@@ -438,10 +368,7 @@
     "mileageKm": 300,
     "color": "ダークグレー",
     "status": "coming_soon",
-    "tags": [
-      "4シーター",
-      "ハイブリッド"
-    ],
+    "tags": ["4シーター", "ハイブリッド"],
     "thumbnailUrl": "/images/inventory/koenigsegg-gemera-01.jpg",
     "shortDescription": "4人乗車を可能にしたケーニグセグ初のグランドツアラー。",
     "lifestyleNote": "ロングツーリングよりもショートトリップ中心の運用を想定。家族同乗を想定する場合は保険と整備計画が重要。"
@@ -458,12 +385,43 @@
     "mileageKm": 3500,
     "color": "シルバー／イエローライン",
     "status": "stock",
-    "tags": [
-      "スピードスター",
-      "限定モデル"
-    ],
+    "tags": ["スピードスター", "限定モデル"],
     "thumbnailUrl": "/images/inventory/ferrari-monza-sp2-01.jpg",
     "shortDescription": "ウインドスクリーンを持たないスピードスタースタイルの限定フェラーリ。",
     "lifestyleNote": "天候条件の良い日に限定したドライブ用途を想定。ヘルメット着用前提の走行が現実的。"
+  },
+  {
+    "id": "subaru-sambar-01",
+    "slug": "subaru-sambar-01",
+    "displayName": "スバル サンバー トラック 4WD 5MT",
+    "maker": "SUBARU",
+    "model": "サンバー トラック",
+    "year": 2013,
+    "grade": "4WD 5MT",
+    "priceYen": 680000,
+    "mileageKm": 88000,
+    "color": "ホワイト",
+    "status": "stock",
+    "tags": ["軽トラ", "4WD", "仕事用"],
+    "thumbnailUrl": "/images/inventory/subaru-sambar-01.jpg",
+    "shortDescription": "小回りの利く4WD軽トラ。荷台の広さと取り回しの良さを優先した仕様。",
+    "lifestyleNote": "現場や畑での足として使う前提。普段使いは別の乗用車を持ちつつ、仕事専用として割り切った使い方を想定。"
+  },
+  {
+    "id": "citroen-c-zero-01",
+    "slug": "citroen-c-zero-01",
+    "displayName": "シトロエン C-ZERO 電気自動車",
+    "maker": "CITROEN",
+    "model": "C-ZERO",
+    "year": 2014,
+    "grade": "EV ベースグレード",
+    "priceYen": 980000,
+    "mileageKm": 42000,
+    "color": "シルバー",
+    "status": "stock",
+    "tags": ["EV", "シティコミューター"],
+    "thumbnailUrl": "/images/inventory/citroen-c-zero-01.jpg",
+    "shortDescription": "コンパクトなフランス製EV。街乗り中心の移動に向いた一台。",
+    "lifestyleNote": "職場との往復や近距離の送迎専用として使う想定。自宅での普通充電と月数回の急速充電を組み合わせた運用スタイルをイメージ。"
   }
 ]

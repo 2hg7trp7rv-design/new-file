@@ -54,7 +54,22 @@ export default function HomePage() {
 
       {/* メインコンテンツ */}
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-10 px-4 py-16 md:gap-12 md:py-20">
-        {/* 在庫車トップ HERO（カードを縦に大きく + 推し在庫表示） */}
+        {/* BONDAGE ヒーロー */}
+        <section className="flex min-h-[260px] flex-col justify-between rounded-3xl border border-red-900/60 bg-gradient-to-b from-black via-neutral-900 to-black p-6 shadow-[0_0_45px_rgba(0,0,0,0.85)] md:min-h-[340px] md:p-8">
+          <div className="space-y-4">
+            <div className="text-[10px] font-semibold tracking-[0.24em] text-neutral-300/80 md:text-xs">
+              AUTO COLLECTION
+            </div>
+            <h1 className="text-4xl font-semibold tracking-[0.4em] md:text-5xl">
+              BONDAGE
+            </h1>
+            <p className="max-w-xl text-[13px] leading-relaxed text-neutral-200/85">
+              在庫車とガレージ運用をまとめて管理するためのベースページ
+            </p>
+          </div>
+        </section>
+
+        {/* 在庫車トップ HERO（カードを大きく + 推し在庫表示） */}
         <section className="flex min-h-[380px] flex-col justify-between rounded-3xl border border-red-900/50 bg-gradient-to-b from-neutral-900/80 via-black/80 to-neutral-900/70 p-6 shadow-[0_0_40px_rgba(0,0,0,0.7)] md:min-h-[440px] md:p-8">
           {/* ラベル行 */}
           <div className="flex items-baseline justify-between gap-3">
@@ -70,9 +85,9 @@ export default function HomePage() {
           <div className="mt-4 flex flex-col gap-6 md:mt-6 md:flex-row md:items-center">
             {/* 左側 テキスト */}
             <div className="space-y-3 md:flex-1">
-              <h1 className="text-2xl font-semibold tracking-wide md:text-3xl">
+              <h2 className="text-2xl font-semibold tracking-wide md:text-3xl">
                 在庫車トップ
-              </h1>
+              </h2>
               <p className="text-[13px] leading-relaxed text-neutral-200/85">
                 現在取り扱い中の在庫車とショップの基本情報をまとめたベースページ
               </p>
@@ -103,26 +118,25 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* 下部タブリンク（在庫車リスト系だけを残す） */}
-          <div className="mt-6 flex flex-col gap-3 md:flex-row">
+          {/* 下部: 大ボタン + 小さな横並びタブ */}
+          <div className="mt-6 space-y-3">
+            {/* 在庫車リスト（メインCTA） */}
             <Link
               href="/inventory"
-              className="flex flex-1 items-center justify-center rounded-full bg-red-600 px-6 py-2.5 text-sm font-semibold tracking-wide text-white shadow-[0_0_25px_rgba(248,113,113,0.55)] transition hover:bg-red-500 hover:shadow-[0_0_35px_rgba(248,113,113,0.75)]"
+              className="flex items-center justify-center rounded-full bg-red-600 px-6 py-2.5 text-sm font-semibold tracking-wide text-white shadow-[0_0_25px_rgba(248,113,113,0.55)] transition hover:bg-red-500 hover:shadow-[0_0_35px_rgba(248,113,113,0.75)]"
             >
               在庫車リスト
             </Link>
-            <Link
-              href="/inventory#list"
-              className="flex flex-1 items-center justify-center rounded-full border border-red-500/60 bg-black/40 px-6 py-2.5 text-sm font-semibold tracking-wide text-red-100/90 shadow-inner shadow-red-950/60 transition hover:border-red-400 hover:bg-red-950/30"
-            >
-              在庫車一覧
-            </Link>
-            <Link
-              href="/inventory#types"
-              className="flex flex-1 items-center justify-center rounded-full border border-neutral-700 bg-black/40 px-6 py-2.5 text-sm font-semibold tracking-wide text-neutral-100 shadow-inner shadow-black/60 transition hover:border-neutral-500 hover:bg-neutral-900/80"
-            >
-              輸入車と国産車
-            </Link>
+
+            {/* 小さなタブ（リンクなし） */}
+            <div className="flex flex-wrap gap-2 text-[11px] text-neutral-200/85">
+              <div className="rounded-full border border-red-500/50 bg-black/40 px-4 py-1.5">
+                在庫車一覧
+              </div>
+              <div className="rounded-full border border-red-500/30 bg-black/40 px-4 py-1.5">
+                輸入車と国産車
+              </div>
+            </div>
           </div>
         </section>
 
@@ -136,9 +150,7 @@ export default function HomePage() {
             <div className="text-[10px] font-semibold tracking-[0.24em] text-neutral-400">
               COLUMN
             </div>
-            <h2 className="mt-2 text-lg font-semibold tracking-wide">
-              コラム
-            </h2>
+            <h2 className="mt-2 text-lg font-semibold tracking-wide">コラム</h2>
             <p className="mt-3 text-[13px] leading-relaxed text-neutral-200/85">
               中古車屋ならではの視点で書いたコラムをまとめるエリア
               在庫の背景や仕入れの理由などをテキストで整理する前提

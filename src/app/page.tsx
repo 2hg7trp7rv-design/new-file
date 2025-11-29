@@ -22,7 +22,7 @@ export default function HomePage() {
             <span className="text-[10px] font-semibold tracking-[0.32em] text-neutral-300 md:text-xs">
               AUTO COLLECTION
             </span>
-            <span className="text-xl font-semibold tracking-[0.32em] text-red-500 md:text-2xl lg:text-3xl">
+            <span className="text-2xl font-semibold tracking-[0.35em] text-red-500 md:text-3xl lg:text-4xl">
               BONDAGE
             </span>
           </Link>
@@ -49,19 +49,22 @@ export default function HomePage() {
 
       {/* メインコンテンツ */}
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-10 px-4 py-16 md:gap-12 md:py-20">
-        {/* BONDAGE タイトル帯 */}
-        <section className="mb-2 mt-2 md:mb-4 md:mt-4">
-          <div className="border-b border-neutral-800/80 pb-4">
-            <div className="text-[11px] font-semibold tracking-[0.32em] text-neutral-500 md:text-xs">
+        {/* BONDAGE ヒーローブロック（画面上部を広く占有） */}
+        <section className="rounded-3xl border border-red-900/60 bg-gradient-to-b from-neutral-950 via-black to-neutral-900/80 p-6 shadow-[0_0_40px_rgba(0,0,0,0.8)] md:p-10">
+          <div className="flex min-h-[220px] flex-col justify-end md:min-h-[260px]">
+            <div className="text-[11px] font-semibold tracking-[0.32em] text-neutral-400 md:text-xs">
               AUTO COLLECTION
             </div>
-            <div className="mt-1 text-3xl font-semibold tracking-[0.35em] text-neutral-50 md:text-4xl lg:text-5xl">
+            <div className="mt-2 text-3xl font-semibold tracking-[0.4em] text-neutral-50 md:text-4xl lg:text-5xl">
               BONDAGE
+            </div>
+            <div className="mt-4 text-[13px] leading-relaxed text-neutral-300 md:text-sm">
+              在庫車とガレージ運用をまとめて管理するためのベースページ
             </div>
           </div>
         </section>
 
-        {/* HERO */}
+        {/* HERO（在庫車トップ） */}
         <section className="rounded-3xl border border-red-900/50 bg-gradient-to-b from-neutral-900/80 via-black/80 to-neutral-900/70 p-6 shadow-[0_0_40px_rgba(0,0,0,0.7)] md:p-8">
           <div className="space-y-5">
             <div className="text-[10px] font-medium tracking-[0.24em] text-red-300/90 md:text-xs">

@@ -1,100 +1,122 @@
+// src/app/page.tsx
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "AUTO COLLECTION Bondage | 在庫車とショップ概要",
+  description: "AUTO COLLECTION Bondage の在庫車一覧とショップ情報をまとめたトップページ",
+};
+
 export default function HomePage() {
   return (
-    <div className="mx-auto flex max-w-5xl flex-col gap-10 px-4 pb-20 pt-8">
-      {/* HERO セクション */}
-      <section className="rounded-3xl bg-gradient-to-br from-red-900/70 via-black to-[#1f130b] p-[1px] shadow-[0_0_80px_rgba(220,38,38,0.35)]">
-        <div className="rounded-3xl bg-[#050505] px-6 py-8 sm:px-10 sm:py-12">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500">
-            Auto Collection Bondage
-          </p>
-          <h1 className="mb-4 text-3xl font-semibold leading-tight sm:text-4xl">
-            夜はボンデージ。<br />
-            昼はガレージのリビング。
-          </h1>
-          <p className="mb-6 text-sm leading-relaxed text-neutral-300 sm:text-base">
-            軽トラからフェラーリ、レンジローバーまで。
-            「夜の優雅さと色気」と、看板犬いなりちゃんがつくる
-            「昼の温もりと親しみやすさ」。そのギャップを、スマホの中にも。
-          </p>
+    <main className="min-h-screen bg-gradient-to-b from-neutral-950 via-black to-neutral-950 text-neutral-50">
+      <div className="mx-auto flex max-w-5xl flex-col gap-10 px-4 py-10 md:py-16">
+        {/* HERO */}
+        <section className="rounded-3xl border border-red-900/40 bg-gradient-to-b from-neutral-900/80 via-black/80 to-neutral-900/60 p-6 shadow-[0_0_40px_rgba(0,0,0,0.7)] md:p-8">
+          <div className="space-y-5">
+            <div className="text-xs font-medium tracking-[0.22em] text-red-300/80">
+              AUTO COLLECTION BONDAGE
+            </div>
 
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-            <button className="inline-flex items-center justify-center rounded-full bg-red-600 px-6 py-2.5 text-sm font-medium text-white shadow-lg shadow-red-900/50 transition active:scale-[0.97]">
-              在庫車を見る
-            </button>
-            <button className="inline-flex items-center justify-center rounded-full border border-[#ecdab9]/50 bg-black/40 px-6 py-2.5 text-sm font-medium text-[#ecdab9] backdrop-blur-sm transition hover:bg-[#ecdab9]/5 active:scale-[0.97]">
-              お店の雰囲気を知る
-            </button>
+            <h1 className="text-2xl font-semibold tracking-wide md:text-3xl">
+              在庫車とガレージの概要
+            </h1>
+
+            <p className="text-[13px] leading-relaxed text-neutral-200/80">
+              現在取り扱い中の在庫車とガレージの雰囲気を一覧で確認できるトップページ
+            </p>
+
+            <div className="flex flex-col gap-3 pt-2 md:flex-row">
+              {/* 在庫車ページへのリンク */}
+              <Link
+                href="/inventory"
+                className="flex items-center justify-center rounded-full bg-red-600 px-6 py-2.5 text-sm font-semibold tracking-wide text-white shadow-[0_0_25px_rgba(248,113,113,0.55)] transition hover:bg-red-500 hover:shadow-[0_0_35px_rgba(248,113,113,0.75)]"
+              >
+                在庫車リスト
+              </Link>
+
+              {/* ページ内アンカー */}
+              <Link
+                href="#about"
+                className="flex items-center justify-center rounded-full border border-red-500/60 bg-black/40 px-6 py-2.5 text-sm font-semibold tracking-wide text-red-100/90 shadow-inner shadow-red-950/60 transition hover:border-red-400 hover:bg-red-950/30"
+              >
+                ショップ情報
+              </Link>
+            </div>
+
+            <div className="flex flex-wrap gap-2 pt-4 text-[11px] text-neutral-200/80">
+              <span className="rounded-full border border-red-500/50 px-3 py-1 bg-black/40">
+                #在庫車一覧
+              </span>
+              <span className="rounded-full border border-red-500/30 px-3 py-1 bg-black/40">
+                #ガレージ情報
+              </span>
+              <span className="rounded-full border border-red-500/30 px-3 py-1 bg-black/40">
+                #スタッフ常駐
+              </span>
+            </div>
           </div>
+        </section>
 
-          <div className="mt-6 flex flex-wrap gap-3 text-[11px] text-neutral-400">
-            <span className="rounded-full border border-neutral-800 bg-black/40 px-3 py-1">
-              #NocturnalElegance
-            </span>
-            <span className="rounded-full border border-neutral-800 bg-black/40 px-3 py-1">
-              #軽トラからフェラーリまで
-            </span>
-            <span className="rounded-full border border-neutral-800 bg-black/40 px-3 py-1">
-              #いなりちゃん常駐
-            </span>
-          </div>
-        </div>
-      </section>
+        {/* NIGHT / DAY セクション */}
+        <section
+          id="about"
+          className="grid gap-6 md:grid-cols-2 md:gap-8"
+          aria-label="ショップの雰囲気"
+        >
+          {/* NIGHT SIDE */}
+          <article className="rounded-3xl border border-neutral-800 bg-gradient-to-b from-neutral-900/80 via-black/80 to-neutral-900/70 p-5 shadow-[0_0_30px_rgba(0,0,0,0.6)] md:p-6">
+            <div className="text-[10px] font-semibold tracking-[0.24em] text-neutral-400">
+              NIGHT SIDE
+            </div>
+            <h2 className="mt-2 text-lg font-semibold tracking-wide">
+              夜のショップ風景
+            </h2>
+            <p className="mt-3 text-[13px] leading-relaxed text-neutral-200/85">
+              夜間にガレージ内に並ぶ輸入車と国産車のレイアウトを基準にした照明計画や展示スタイルのイメージ
+            </p>
+          </article>
 
-      {/* 昼と夜の二面性セクション */}
-      <section className="grid gap-4 sm:grid-cols-2">
-        <div className="rounded-2xl border border-neutral-800 bg-gradient-to-b from-black/70 to-neutral-950 px-5 py-5">
-          <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.26em] text-neutral-500">
-            Night Side
-          </p>
-          <h2 className="mb-2 text-lg font-semibold text-[#ecdab9]">
-            夜の優雅さ・色気
+          {/* DAY SIDE */}
+          <article className="rounded-3xl border border-neutral-800 bg-gradient-to-b from-neutral-900/80 via-black/80 to-neutral-900/70 p-5 shadow-[0_0_30px_rgba(0,0,0,0.6)] md:p-6">
+            <div className="text-[10px] font-semibold tracking-[0.24em] text-neutral-400">
+              DAY SIDE
+            </div>
+            <h2 className="mt-2 text-lg font-semibold tracking-wide">
+              昼のガレージ風景
+            </h2>
+            <p className="mt-3 text-[13px] leading-relaxed text-neutral-200/85">
+              日中に来店するユーザー層と動線を前提にした車両配置とガレージ内の使い方のイメージ
+            </p>
+          </article>
+        </section>
+
+        {/* このサイトでできること */}
+        <section className="rounded-3xl border border-neutral-800 bg-gradient-to-b from-neutral-900/80 via-black/80 to-neutral-900/70 p-5 shadow-[0_0_30px_rgba(0,0,0,0.6)] md:p-6">
+          <h2 className="text-base font-semibold tracking-wide">
+            このサイトでできること
           </h2>
-          <p className="text-sm leading-relaxed text-neutral-300">
-            フェラーリやレンジローバーが静かに並ぶ、薄暗いガレージ。
-            レッドのテールランプと、グロスブラックのボディだけが浮かび上がる時間帯。
-            「Bondage」の名前がいちばん似合うのは、きっとこの瞬間です。
-          </p>
-        </div>
 
-        <div className="rounded-2xl border border-neutral-800 bg-gradient-to-b from-neutral-950 to-black/70 px-5 py-5">
-          <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.26em] text-neutral-500">
-            Day Side
-          </p>
-          <h2 className="mb-2 text-lg font-semibold text-red-400">
-            昼の温もり・親しみやすさ
-          </h2>
-          <p className="text-sm leading-relaxed text-neutral-300">
-            軽トラを見に来たおじちゃんも、輸入車を眺めに来た学生さんも、
-            みんなを同じトーンで迎えるお店。
-            いなりちゃんが転がっているソファのすぐそばで、次の相棒の相談が始まります。
-          </p>
-        </div>
-      </section>
+          <ul className="mt-4 space-y-3 text-[13px] leading-relaxed text-neutral-200/85">
+            <li className="flex gap-2">
+              <span className="mt-[4px] h-[6px] w-[6px] rounded-full bg-red-500" />
+              <span>在庫車リストと車両ごとの基本情報を確認</span>
+            </li>
+            <li className="flex gap-2">
+              <span className="mt-[4px] h-[6px] w-[6px] rounded-full bg-red-500" />
+              <span>軽トラから高級車までを同じ条件で比較</span>
+            </li>
+            <li className="flex gap-2">
+              <span className="mt-[4px] h-[6px] w-[6px] rounded-full bg-red-500" />
+              <span>Instagram など外部コンテンツと連携して実車写真を確認</span>
+            </li>
+          </ul>
 
-      {/* これから増やしていく導線の土台 */}
-      <section className="space-y-3 rounded-2xl border border-neutral-800 bg-black/60 px-5 py-5">
-        <h2 className="text-base font-semibold">
-          このサイトでできること（これから増やしていきます）
-        </h2>
-        <ul className="space-y-2 text-sm text-neutral-300">
-          <li className="flex items-start gap-2">
-            <span className="mt-[5px] inline-block h-1.5 w-1.5 rounded-full bg-red-500" />
-            <span>在庫車の一覧と、1台ごとの「生活が見える」紹介文を読む。</span>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="mt-[5px] inline-block h-1.5 w-1.5 rounded-full bg-[#ecdab9]" />
-            <span>軽トラ〜スーパーカーまで、「Bondageならではの視点」で比較する。</span>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="mt-[5px] inline-block h-1.5 w-1.5 rounded-full bg-neutral-500" />
-            <span>Instagramや実店舗での様子とつなげて、雰囲気を掴む。</span>
-          </li>
-        </ul>
-        <p className="pt-1 text-[11px] text-neutral-500">
-          ※在庫データベース（inventory.json）と連動した本格的な在庫ページは、
-          このあと一緒に組んでいきます。
-        </p>
-      </section>
-    </div>
+          <p className="mt-5 text-[11px] text-neutral-500">
+            在庫データベース inventory.json と連動した個別ページや追加機能を順次反映予定
+          </p>
+        </section>
+      </div>
+    </main>
   );
 }

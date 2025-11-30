@@ -12,36 +12,59 @@ export const metadata: Metadata = {
 export default function HomePage() {
   const cars = getAllInventory();
 
+  // 在庫から優先的に 1 台ピックアップ
   const featured =
     cars.find((car) => {
       const status = String((car as any).status);
       return status === "IN_STOCK" || status === "stock";
     }) ?? cars[0];
 
-  const featuredName =
-    featured &&
-    (featured.displayName ??
-      [featured.maker, featured.model, featured.grade]
-        .filter(Boolean)
-        .join(" "));
+  // 表示名：メーカー＋車種＋グレードで組み立て
+  const featuredName = featured
+    ? [featured.maker, featured.model, featured.grade]
+        .filter((v): v is string => Boolean(v))
+        .join(" ")
+    : "在庫車トップ";
 
+  // TOP 2 枚目で使う画像（なければ hero.jpg）
   const featuredImage =
-    (featured as any)?.image ?? "/images/hero.jpg";
+    (featured as any)?.mainImage ??
+    (featured as any)?.image ??
+    "/images/hero.jpg";
 
   return (
     <main className="relative min-h-screen bg-[#050507] text-neutral-50">
-      {/* ヒーローセクション：背景だけ hero.jpg にして、画像はあとで差し替え */}
+      {/* 1枚目：ヒーローセクション（背景だけ hero.jpg。画像差し替えはあとで） */}
       <section className="relative h-[70vh] min-h-[460px] overflow-hidden">
-        {/* 背景画像（hero.jpg 枠だけ用意） */}
+        {/* 背景画像 */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url(/images/hero.jpg)" }}
         />
-        {/* トーンを落とすためのオーバーレイ */}
+        {/* トーン調整オーバーレイ */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/60 to-black/90" />
 
+        {/* ヘッダー（ナビ） */}
+        <header className="relative z-20 flex items-center justify-between px-6 pt-5 md:px-10 md:pt-7">
+          <div className="text-[11px] tracking-[0.26em] text-neutral-100 md:text-xs">
+            AUTO COLLECTION{" "}
+            <span className="ml-1 font-semibold text-red-500">Bondage</span>
+          </div>
+          <nav className="flex items-center gap-4 text-[11px] tracking-[0.2em] text-neutral-200 md:text-xs">
+            <Link href="/" className="opacity-80">
+              HOME
+            </Link>
+            <Link
+              href="https://www.instagram.com"
+              className="rounded-full border border-red-500/70 bg-black/60 px-4 py-1.5 text-[10px] font-semibold tracking-[0.22em] text-red-100 shadow-[0_0_18px_rgba(248,113,113,0.7)] md:text-[11px]"
+            >
+              INSTAGRAM
+            </Link>
+          </nav>
+        </header>
+
         {/* テキストレイヤー */}
-        <div className="relative z-10 flex h-full flex-col justify-center px-6 pb-16 pt-28 md:px-10 md:pb-24">
+        <div className="relative z-10 flex h-full flex-col justify-center px-6 pb-16 pt-10 md:px-10 md:pb-24">
           <p className="text-xs font-light tracking-[0.3em] text-neutral-200/80 md:text-sm">
             AUTO COLLECTION
           </p>
@@ -66,16 +89,16 @@ export default function HomePage() {
 
       {/* メインコンテンツ */}
       <div className="mx-auto flex max-w-5xl flex-col gap-10 px-4 py-10 md:gap-12 md:py-14">
-        {/* 2枚目：在庫車トップ（画像を全面に・上に文字を重ねる） */}
-        <section className="relative overflow-hidden rounded-[32px] border border-red-600/60 bg-black/60 shadow-[0_0_55px_rgba(248,113,113,0.55)]">
-          {/* 背景画像（全面表示） */}
+        {/* 2枚目：在庫車トップ（画像全面＋文字を重ねる＋赤枠グロー） */}
+        <section className="relative overflow-hidden rounded-[32px] border border-red-600/70 bg-black/70 shadow-[0_0_55px_rgba(248,113,113,0.55)]">
+          {/* 背景画像（全面） */}
           <div
             className="h-[260px] w-full bg-cover bg-center md:h-[340px]"
             style={{ backgroundImage: `url(${featuredImage})` }}
           />
 
-          {/* 下側を読みやすくするグラデーション */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+          {/* 下側グラデーション（文字を読みやすく） */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/92 via-black/45 to-transparent" />
 
           {/* オーバーレイテキスト */}
           <div className="absolute inset-x-5 bottom-5 space-y-3 md:inset-x-8 md:bottom-7 md:space-y-4">
@@ -85,21 +108,12 @@ export default function HomePage() {
 
             <div className="space-y-1 md:flex md:flex-wrap md:items-end md:justify-between md:gap-2 md:space-y-0">
               <h2 className="text-lg font-semibold tracking-wide md:text-xl">
-                {featuredName ?? "在庫車トップ"}
+                {featuredName}
               </h2>
 
               {featured?.year && (
                 <p className="text-[11px] text-neutral-200/85 md:text-xs">
                   {featured.year}年式
-                  {featured.mileageKm != null && (
-                    <>
-                      {"・"}
-                      {Intl.NumberFormat("ja-JP").format(
-                        Number(featured.mileageKm)
-                      )}
-                      km
-                    </>
-                  )}
                 </p>
               )}
             </div>

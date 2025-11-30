@@ -1,5 +1,28 @@
 // src/lib/inventory.ts
-import inventoryRaw from "@/data/inventory.json";
+import inventoryRaw from "@/// src/lib/inventory.ts
+
+export type InventoryStatus = "stock" | "sold" | "coming_soon";
+
+export type InventoryItem = {
+  id: string;
+  // 一覧で使っている基本情報
+  name: string;
+  maker: string;
+  status: InventoryStatus;
+
+  // 一覧で参照しているオプション項目
+  year?: number;
+  bodyType?: string;
+  mileageKm?: number | null;
+  priceYen?: number | null;
+  color?: string;
+  grade?: string;
+  tags?: string[];
+
+  // 在庫カードで画像を出すためのプロパティ
+  image?: string;
+};
+data/inventory.json";
 
 export type InventoryStatus = "stock" | "sold" | "coming_soon";
 

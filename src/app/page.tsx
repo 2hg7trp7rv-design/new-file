@@ -11,20 +11,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   const cars = getAllInventory();
-  const featured = cars[0];
-
-  const featuredName =
-    featured &&
-    [featured.maker, featured.model, featured.grade]
-      .filter(Boolean)
-      .join(" ");
-
-  const featuredDescription = featured?.description ?? "";
-
-  const heroImage =
-    (featured as any)?.image ??
-    (featured as any)?.heroImage ??
-    "/hero.jpg";
+  const totalStock = cars.length;
 
   return (
     <main className="relative min-h-screen bg-[#050507] text-neutral-50">
@@ -71,81 +58,94 @@ export default function HomePage() {
 
       {/* メインラッパー */}
       <div className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col gap-10 px-4 pb-16 pt-20 md:gap-14 md:pb-24 md:pt-24">
-        {/* ===== HERO ＋ STOCK TOP セクション ===== */}
-        <section className="relative overflow-hidden rounded-[28px] border border-red-900/60 bg-black/60 shadow-[0_0_50px_rgba(0,0,0,0.9)]">
-          {/* 背景：ヒーロー画像 */}
-          <div className="relative h-[420px] w-full md:h-[520px]">
+        {/* ===== HERO セクション（Bondage）===== */}
+        <section className="relative overflow-hidden rounded-[28px] border border-red-900/60 bg-black/70 shadow-[0_0_50px_rgba(0,0,0,0.9)]">
+          <div className="relative h-[360px] w-full md:h-[420px]">
+            {/* 背景は hero.jpg を想定（ユーザー側で差し替え） */}
             <div
               className="absolute inset-0 bg-cover bg-center"
-              style={{
-                backgroundImage: `url(${heroImage})`,
-              }}
+              style={{ backgroundImage: "url(/hero.jpg)" }}
             />
-            {/* 暗めグラデーション＋四辺の赤い光 */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/75 to-black/90" />
-            <div className="pointer-events-none absolute -inset-10 bg-[radial-gradient(circle_at_top,_rgba(248,113,113,0.24),transparent_60%),_radial-gradient(circle_at_bottom,_rgba(248,113,113,0.24),transparent_60%)] opacity-70" />
+            {/* 暗めグラデーション＋赤いグロー */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/80 to-black/95" />
+            <div className="pointer-events-none absolute -inset-10 bg-[radial-gradient(circle_at_top,_rgba(248,113,113,0.28),transparent_60%),_radial-gradient(circle_at_bottom,_rgba(248,113,113,0.24),transparent_60%)] opacity-70" />
 
-            {/* HERO 本文 */}
-            <div className="relative flex h-full flex-col justify-between px-5 py-5 md:px-10 md:py-8">
-              {/* 上段：ブランドロゴ風テキスト */}
-              <div>
-                <p className="text-[9px] font-medium tracking-[0.3em] text-red-200/80 md:text-[10px]">
-                  AUTO COLLECTION
-                </p>
-                <h1 className="mt-1 text-[28px] leading-none tracking-[0.18em] md:text-[40px]">
-                  Bondage
-                </h1>
-                <p className="mt-3 max-w-xs text-[11px] leading-relaxed text-neutral-200/80 md:max-w-sm md:text-[12px]">
-                  束縛から解き放たれた一台を、静かなデジタルガレージから。
-                  セレクトした在庫だけを、丁寧に整えた環境でご覧いただけます。
-                </p>
+            <div className="relative flex h-full flex-col justify-center px-5 py-6 md:px-10 md:py-8">
+              <p className="text-[9px] font-medium tracking-[0.3em] text-red-200/80 md:text-[10px]">
+                AUTO COLLECTION
+              </p>
+              <h1 className="mt-1 text-[32px] leading-none tracking-[0.18em] md:text-[42px]">
+                Bondage
+              </h1>
+              <p className="mt-3 max-w-md text-[11px] leading-relaxed text-neutral-200/85 md:text-[12px]">
+                夜のガレージと昼の生活のあいだにある場所。
+                まずはこの1枚から、在庫車と世界観を覗いてください。
+              </p>
+
+              <div className="mt-7">
+                <Link
+                  href="/inventory"
+                  className="inline-flex items-center justify-center rounded-full bg-red-600/95 px-7 py-2.5 text-[12px] font-semibold tracking-[0.22em] text-white shadow-[0_0_26px_rgba(248,113,113,0.9)] backdrop-blur-sm transition hover:bg-red-500 hover:shadow-[0_0_38px_rgba(248,113,113,1)] md:px-9 md:py-3"
+                >
+                  在庫車一覧
+                </Link>
               </div>
+            </div>
+          </div>
+        </section>
 
-              {/* 下段：STOCK TOP オーバーレイカード */}
-              <div className="mt-6 flex flex-col gap-3 md:mt-0 md:flex-row md:items-end md:justify-between">
-                {/* 左側：テキストブロック */}
-                <div className="max-w-md">
-                  <div className="inline-flex items-center gap-2">
-                    <span className="text-[9px] font-semibold tracking-[0.32em] text-red-300/90">
-                      STOCK TOP
-                    </span>
-                    <span className="h-[1px] w-10 bg-red-400/70" />
-                  </div>
+        {/* ===== 在庫車トップ カード ===== */}
+        <section
+          aria-label="在庫車トップ"
+          className="rounded-[28px] border border-red-900/60 bg-gradient-to-b from-neutral-900/90 via-black/90 to-neutral-900/90 p-6 shadow-[0_0_50px_rgba(0,0,0,0.9)] md:p-8 min-h-[70vh] flex flex-col justify-between"
+        >
+          {/* 上部ヘッダー */}
+          <header>
+            <div className="text-[10px] font-medium tracking-[0.3em] text-red-300/90">
+              STOCK TOP
+            </div>
+            <h2 className="mt-3 text-2xl font-semibold tracking-wide md:text-[26px]">
+              在庫車トップ
+            </h2>
+            <p className="mt-3 max-w-xl text-[13px] leading-relaxed text-neutral-200/90">
+              現在取り扱い中の在庫車とショップの基本情報をまとめた
+              ベースページです。ここから在庫一覧や車種別の絞り込みへ
+              進むことができます。
+            </p>
+          </header>
 
-                  <div className="mt-2 inline-flex rounded-full border border-white/25 bg-white/10 px-3 py-1 backdrop-blur-md">
-                    <span className="text-[10px] tracking-[0.2em] text-neutral-50/95">
-                      CURRENT INVENTORY
-                    </span>
-                  </div>
+          {/* 中央：少し余白のある説明ゾーン（デザイン重視） */}
+          <div className="mt-6 flex flex-1 flex-col items-center justify-center">
+            <p className="max-w-md text-center text-[12px] leading-relaxed text-neutral-300/85">
+              まずは在庫車リストから、気になる1台を探してみてください。
+              輸入車と国産車をまとめて眺められるようにレイアウトしています。
+            </p>
+          </div>
 
-                  {featured && (
-                    <div className="mt-3 space-y-1">
-                      <p className="text-xs tracking-[0.24em] text-neutral-300/80">
-                        FEATURED STOCK
-                      </p>
-                      <p className="text-[15px] font-semibold tracking-wide md:text-[18px]">
-                        {featuredName || "在庫車を準備中"}
-                      </p>
+          {/* 下部：在庫車リストボタン＋タブ風ボタン */}
+          <div className="mt-8 flex flex-col items-center gap-4 pb-1">
+            {/* メインCTA */}
+            <Link
+              href="/inventory"
+              className="inline-flex w-full max-w-sm items-center justify-center rounded-full bg-red-600 px-8 py-3 text-[13px] font-semibold tracking-[0.24em] text-white shadow-[0_0_26px_rgba(248,113,113,0.9)] transition hover:bg-red-500 hover:shadow-[0_0_36px_rgba(248,113,113,1)]"
+            >
+              在庫車リスト
+            </Link>
 
-                      {featuredDescription && (
-                        <p className="mt-2 line-clamp-2 text-[11px] leading-relaxed text-neutral-200/90 md:max-w-[360px] md:text-[12px]">
-                          {featuredDescription}
-                        </p>
-                      )}
-                    </div>
-                  )}
-                </div>
-
-                {/* 右側：在庫車一覧ボタン（赤塗りつぶし） */}
-                <div className="flex items-end justify-start md:justify-end">
-                  <Link
-                    href="/inventory"
-                    className="inline-flex items-center justify-center rounded-full bg-red-600/95 px-6 py-2 text-[11px] font-semibold tracking-[0.2em] text-white shadow-[0_0_26px_rgba(248,113,113,0.8)] backdrop-blur-sm transition hover:bg-red-500 hover:shadow-[0_0_38px_rgba(248,113,113,1)] md:px-8 md:py-2.5 md:text-[12px]"
-                  >
-                    在庫車一覧
-                  </Link>
-                </div>
-              </div>
+            {/* サブタブ：輸入車・国産車 / 在庫あり */}
+            <div className="flex flex-wrap justify-center gap-3">
+              <button
+                type="button"
+                className="min-w-[140px] rounded-full border border-neutral-600 bg-black/40 px-5 py-2 text-[11px] font-semibold tracking-[0.18em] text-neutral-100 shadow-inner shadow-black/70"
+              >
+                輸入車・国産車
+              </button>
+              <button
+                type="button"
+                className="min-w-[140px] rounded-full border border-neutral-600 bg-black/40 px-5 py-2 text-[11px] font-semibold tracking-[0.18em] text-neutral-100 shadow-inner shadow-black/70"
+              >
+                在庫あり：{totalStock}台
+              </button>
             </div>
           </div>
         </section>
@@ -164,15 +164,16 @@ export default function HomePage() {
                 COLUMN
               </span>
             </div>
-            <h2 className="mt-3 text-lg font-semibold tracking-wide md:text-xl">
+            <h3 className="mt-3 text-lg font-semibold tracking-wide md:text-xl">
               中古車コラム
-            </h2>
+            </h3>
             <p className="mt-3 text-[13px] leading-relaxed text-neutral-200/90">
               買取査定の裏側や仕入れの基準、展示の工夫など、
               中古車屋ならではの視点で切り取った短いコラムをまとめていくスペース。
             </p>
             <p className="mt-3 text-[11px] text-neutral-400">
-              STORY / MARKET / DETAIL の3つの切り口で、クルマの背景を言葉にします。
+              STORY / MARKET / DETAIL の3つの切り口で、
+              クルマの背景を言葉にしていきます。
             </p>
           </article>
 
@@ -184,15 +185,17 @@ export default function HomePage() {
                 SERVICE LOG
               </span>
             </div>
-            <h2 className="mt-3 text-lg font-semibold tracking-wide md:text-xl">
+            <h3 className="mt-3 text-lg font-semibold tracking-wide md:text-xl">
               整備記録と入庫履歴
-            </h2>
+            </h3>
             <p className="mt-3 text-[13px] leading-relaxed text-neutral-200/90">
-              納車前点検やオイル交換、消耗品交換、車検整備などの履歴を整理するための下準備となるセクション。
+              納車前点検やオイル交換、消耗品交換、車検整備などの履歴を整理するための
+              セクション。将来的には在庫車ごとのコンディションを
+              一覧で確認できることを目指します。
             </p>
             <p className="mt-3 text-[11px] text-neutral-400">
-              「いつ・どこを・どのように整備したか」を可視化し、
-              在庫車ごとのコンディションが一目で分かる状態を目指します。
+              「いつ・どこを・どのように整備したか」を記録し、
+              安心して選べる在庫管理につなげていきます。
             </p>
           </article>
         </section>
@@ -202,22 +205,28 @@ export default function HomePage() {
           id="features"
           className="rounded-3xl border border-neutral-800/80 bg-gradient-to-b from-neutral-900/80 via-black/85 to-neutral-900/80 p-5 shadow-[0_0_35px_rgba(0,0,0,0.85)] md:p-6"
         >
-          <h2 className="text-base font-semibold tracking-wide md:text-lg">
+          <h3 className="text-base font-semibold tracking-wide md:text-lg">
             このサイトでできること
-          </h2>
+          </h3>
 
           <ul className="mt-4 space-y-3 text-[13px] leading-relaxed text-neutral-200/90">
             <li className="flex gap-2">
               <span className="mt-[5px] h-[6px] w-[6px] rounded-full bg-red-500" />
-              <span>在庫車リストと車両ごとの基本情報を、スマホからでもストレスなく確認できます。</span>
+              <span>
+                在庫車リストと車両ごとの基本情報を、スマホからでもストレスなく確認できます。
+              </span>
             </li>
             <li className="flex gap-2">
               <span className="mt-[5px] h-[6px] w-[6px] rounded-full bg-red-500" />
-              <span>輸入車と国産車を同じ条件で見比べられるよう、情報の粒度を揃えて整理していきます。</span>
+              <span>
+                輸入車と国産車を同じ条件で見比べられるよう、情報の粒度を揃えて整理していきます。
+              </span>
             </li>
             <li className="flex gap-2">
               <span className="mt-[5px] h-[6px] w-[6px] rounded-full bg-red-500" />
-              <span>中古車屋ならではの実体験や視点を交えたコラムで、数字では見えない「背景」も伝えます。</span>
+              <span>
+                中古車屋ならではの実体験や視点を交えたコラムで、数字では見えない「背景」も伝えます。
+              </span>
             </li>
           </ul>
 

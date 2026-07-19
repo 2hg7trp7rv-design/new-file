@@ -1,241 +1,367 @@
-// src/app/page.tsx
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { getAllInventory } from "@/lib/inventory";
+import { CoatingSelector } from "@/components/CoatingSelector";
+import {
+  ArrowRightIcon,
+  CalendarIcon,
+  CarIcon,
+  CheckIcon,
+  ClockIcon,
+  DropletsIcon,
+  MapPinIcon,
+  ShieldIcon,
+  SparklesIcon,
+} from "@/components/ui/Icons";
+import { SERVICES } from "@/data/services";
+import { SITE } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "AUTO COLLECTION Bondage | 在庫車トップ",
+  title: "純水手洗い洗車・磨き・カーコーティング専門店",
   description:
-    "AUTO COLLECTION Bondage の在庫車一覧とショップ概要をまとめたトップページ",
+    "鳥取県米子市のRemake Studio M’s。純水手洗い洗車、ボディ磨き、カーコーティング。店内でニコニコレンタカー米子久米町店の受付も行っています。",
 };
 
+const serviceIcons = {
+  wash: DropletsIcon,
+  polish: SparklesIcon,
+  coating: ShieldIcon,
+};
+
+const faqs = [
+  {
+    question: "コーティングには何日かかりますか？",
+    answer:
+      "基本は2泊3日のご案内です。ただし商品、車種、塗装状態、必要な研磨によって変わります。ご予約前に車両状態を確認し、正確な日程をご案内します。",
+  },
+  {
+    question: "施工中にレンタカーを利用できますか？",
+    answer:
+      "M’s店内にニコニコレンタカー米子久米町店の受付があります。施工とレンタカーは別予約・別料金のため、同時利用をご希望の場合は、車両の空き状況も含めて事前にご相談ください。",
+  },
+  {
+    question: "代車はありますか？",
+    answer:
+      "代車のご用意があります。台数や利用条件、料金の扱いは施工内容と日程によって異なるため、ご予約時に確認をお願いします。",
+  },
+  {
+    question: "新車価格の対象はいつまでですか？",
+    answer:
+      "公開料金表では、納車から1カ月以内を新車扱いとしています。それ以降でも塗装状態によってご提案内容が変わるため、まずはご相談ください。",
+  },
+  {
+    question: "どのコーティングを選べばいいか分かりません。",
+    answer:
+      "乗る予定の年数、屋内・屋外の保管環境、洗車頻度、ご予算を伺ってご提案します。商品名を決めずにご来店いただいて問題ありません。",
+  },
+];
+
 export default function HomePage() {
-  const cars = getAllInventory();
-  const totalStock = cars.length;
-
   return (
-    <main className="relative min-h-screen bg-[#050507] text-neutral-50">
-      {/* 四隅ナビゲーション */}
-      <div className="pointer-events-none fixed inset-0 z-30">
-        {/* 左上 ブランドロゴ */}
-        <div className="pointer-events-auto absolute left-4 top-4 md:left-8 md:top-8">
-          <Link
-            href="/"
-            className="inline-flex flex-col border-l border-red-500/80 pl-3"
-          >
-            <span className="text-[9px] font-semibold tracking-[0.28em] text-neutral-200 md:text-[10px]">
-              AUTO COLLECTION
-            </span>
-            <span className="mt-[2px] text-lg font-semibold tracking-[0.18em] md:text-2xl">
-              Bondage
-            </span>
-          </Link>
-        </div>
-
-        {/* 右上 MENU ダミー */}
-        <div className="pointer-events-auto absolute right-4 top-4 md:right-8 md:top-8">
-          <button
-            type="button"
-            className="flex items-center gap-2 text-[10px] font-medium tracking-[0.22em] text-neutral-300 md:text-xs"
-          >
-            <span>MENU</span>
-            <span className="flex h-4 w-4 items-center justify-center rounded-full border border-red-500/70 text-[9px] text-red-400">
-              ///
-            </span>
-          </button>
-        </div>
-
-        {/* 右下 PIT IN ボタン（在庫車ページへ） */}
-        <div className="pointer-events-auto absolute bottom-4 right-4 md:bottom-8 md:right-8">
-          <Link
-            href="/inventory"
-            className="inline-flex items-center justify-center rounded-full bg-red-600 px-6 py-2 text-xs font-semibold tracking-[0.18em] text-white shadow-[0_0_20px_rgba(248,113,113,0.7)] transition hover:bg-red-500 hover:shadow-[0_0_30px_rgba(248,113,113,0.9)] md:px-8 md:py-2.5 md:text-[13px]"
-          >
-            PIT IN
-          </Link>
-        </div>
-      </div>
-
-      {/* メインラッパー */}
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col gap-10 px-4 pb-16 pt-20 md:gap-14 md:pb-24 md:pt-24">
-        {/* ===== HERO セクション（Bondage）===== */}
-        <section className="relative overflow-hidden rounded-[28px] border border-red-900/60 bg-black/70 shadow-[0_0_50px_rgba(0,0,0,0.9)]">
-          <div className="relative h-[360px] w-full md:h-[420px]">
-            {/* 背景は hero.jpg を想定（ユーザー側で差し替え） */}
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: "url(/hero.jpg)" }}
+    <>
+      <main>
+        <section className="hero" aria-labelledby="hero-title">
+          <div className="hero-media">
+            <Image
+              src="/images/ms-hero.webp"
+              alt="明るい施工ブースで仕上がった白い車のサービスイメージ"
+              fill
+              priority
+              sizes="100vw"
             />
-            {/* 暗めグラデーション＋赤いグロー */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/80 to-black/95" />
-            <div className="pointer-events-none absolute -inset-10 bg-[radial-gradient(circle_at_top,_rgba(248,113,113,0.28),transparent_60%),_radial-gradient(circle_at_bottom,_rgba(248,113,113,0.24),transparent_60%)] opacity-70" />
-
-            <div className="relative flex h-full flex-col justify-center px-5 py-6 md:px-10 md:py-8">
-              <p className="text-[9px] font-medium tracking-[0.3em] text-red-200/80 md:text-[10px]">
-                AUTO COLLECTION
-              </p>
-              <h1 className="mt-1 text-[32px] leading-none tracking-[0.18em] md:text-[42px]">
-                Bondage
+          </div>
+          <div className="hero-shade" />
+          <div className="hero-content shell">
+            <div className="hero-copy">
+              <p className="eyebrow eyebrow-light">YONAGO / CAR DETAILING STUDIO</p>
+              <h1 id="hero-title">
+                愛車がきれいになる時間も、
+                <span>あなたは動ける。</span>
               </h1>
-              <p className="mt-3 max-w-md text-[11px] leading-relaxed text-neutral-200/85 md:text-[12px]">
-                夜のガレージと昼の生活のあいだにある場所。
-                まずはこの1枚から、在庫車と世界観を覗いてください。
+              <p className="hero-lead">
+                純水手洗い洗車、磨き、カーコーティング。
+                <br />
+                そして同じ店内で、レンタカー受付まで。
               </p>
+              <div className="hero-actions">
+                <a className="button" href="#services">
+                  メニュー・料金を見る <ArrowRightIcon />
+                </a>
+                <a className="button button-ghost" href={SITE.reserveUrl} target="_blank" rel="noreferrer">
+                  <CalendarIcon /> Web予約
+                </a>
+              </div>
+              <div className="hero-proof" aria-label="店舗の特徴">
+                <span><CheckIcon />創業1929年の松本油店が運営</span>
+                <span><CheckIcon />G’ZOX登録パートナー</span>
+                <span><CheckIcon />レンタカー店内受付</span>
+              </div>
+            </div>
+          </div>
+          <p className="visual-note">掲載写真はサービスイメージです</p>
+        </section>
 
-              <div className="mt-7">
-                <Link
-                  href="/inventory"
-                  className="inline-flex items-center justify-center rounded-full bg-red-600/95 px-7 py-2.5 text-[12px] font-semibold tracking-[0.22em] text-white shadow-[0_0_26px_rgba(248,113,113,0.9)] backdrop-blur-sm transition hover:bg-red-500 hover:shadow-[0_0_38px_rgba(248,113,113,1)] md:px-9 md:py-3"
-                >
-                  在庫車一覧
-                </Link>
+        <div className="important-note">
+          <div className="shell">
+            <span>ご案内</span>
+            <p>
+              レンタカーは施工と別予約・別料金です。同時利用をご希望の場合は、事前に空車状況をご確認ください。
+            </p>
+            <Link href="/mobility">詳しく見る <ArrowRightIcon /></Link>
+          </div>
+        </div>
+
+        <section className="intro section shell" aria-labelledby="intro-title">
+          <div className="section-heading intro-heading">
+            <div>
+              <p className="eyebrow">WHAT WE DO</p>
+              <h2 id="intro-title">きれいにするだけでなく、<br />きれいが続くところまで。</h2>
+            </div>
+            <p>
+              車の状態と使い方は、一台ずつ違います。だから商品を先に決めつけず、塗装状態、保管環境、洗車頻度、乗る予定の年数を確認するところから始めます。
+            </p>
+          </div>
+
+          <div className="intro-principles">
+            <article>
+              <span>01</span>
+              <h3>洗う</h3>
+              <p>砂や汚れを正しい順序で落とし、純水で水ジミを残しにくく。</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>整える</h3>
+              <p>必要最小限の研磨で、塗装のくすみや洗車傷を整える。</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>守る</h3>
+              <p>予算と保有期間に合うコーティングで、日々のお手入れを楽に。</p>
+            </article>
+          </div>
+        </section>
+
+        <section className="services section section-tint" id="services" aria-labelledby="services-title">
+          <div className="shell">
+            <div className="section-heading">
+              <div>
+                <p className="eyebrow">SERVICES & PRICE</p>
+                <h2 id="services-title">必要なケアが、すぐ分かる。</h2>
+              </div>
+              <p>まず知りたい最低料金と、作業内容を並べました。表示料金はすべて税込です。</p>
+            </div>
+
+            <div className="service-grid">
+              {SERVICES.map((service) => {
+                const Icon = serviceIcons[service.slug];
+                return (
+                  <article className="service-card" key={service.slug}>
+                    <Link className="service-card-image" href={`/services/${service.slug}`}>
+                      <Image src={service.image} alt={service.imageAlt} fill sizes="(max-width: 760px) 100vw, 33vw" />
+                      <span className="service-icon"><Icon /></span>
+                    </Link>
+                    <div className="service-card-body">
+                      <p className="card-eyebrow">{service.eyebrow}</p>
+                      <h3>{service.name}</h3>
+                      <p>{service.summary}</p>
+                      <div className="service-price">
+                        <div>
+                          <small>税込</small>
+                          <strong>{service.startingPrice}</strong>
+                          <span>{service.priceCaption}</span>
+                        </div>
+                        <Link className="round-link" href={`/services/${service.slug}`} aria-label={`${service.name}の詳細を見る`}>
+                          <ArrowRightIcon />
+                        </Link>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+            <p className="image-disclaimer">サービス写真はイメージです。実際の店舗・車両とは異なります。</p>
+          </div>
+        </section>
+
+        <section className="mobility section" aria-labelledby="mobility-title">
+          <div className="mobility-orb mobility-orb-one" />
+          <div className="mobility-orb mobility-orb-two" />
+          <div className="shell mobility-layout">
+            <div className="mobility-copy">
+              <p className="eyebrow eyebrow-light">CAR CARE × MOBILITY</p>
+              <h2 id="mobility-title">預けたあとの予定まで、<br />止めないために。</h2>
+              <p>
+                M’sとニコニコレンタカー米子久米町店は、同じ住所・同じ店内受付です。愛車の施工とレンタカーの空きが合えば、その場で移動へ切り替えられます。
+              </p>
+              <div className="mobility-awards">
+                <span>2024</span><span>2025</span><span>2026</span>
+                <p>ニコニコレンタカー<br /><strong>3年連続 お客様大賞</strong></p>
+              </div>
+              <Link className="button button-light" href="/mobility">
+                利用方法と注意点 <ArrowRightIcon />
+              </Link>
+            </div>
+
+            <div className="mobility-flow">
+              {[
+                ["01", "M’sへ入庫", "車両状態と施工内容、完成予定を確認します。"],
+                ["02", "同じ店内で受付", "別途予約したレンタカーの手続きを行います。"],
+                ["03", "そのまま外出", "仕事、買い物、旅行など予定を続けられます。"],
+                ["04", "返却・愛車受取", "レンタカー返却後、仕上がった愛車を受け取ります。"],
+              ].map(([number, title, text]) => (
+                <article key={number}>
+                  <span>{number}</span>
+                  <div><h3>{title}</h3><p>{text}</p></div>
+                </article>
+              ))}
+              <p className="mobility-caution">
+                ※施工とレンタカーは別予約・別精算です。空車、料金、補償、利用条件はニコニコレンタカーの規定に準じます。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="coating section shell" id="coating" aria-labelledby="coating-title">
+          <div className="section-heading coating-heading">
+            <div>
+              <p className="eyebrow">CHOOSE BY DURATION</p>
+              <h2 id="coating-title">何年守りたいかで、選びやすく。</h2>
+            </div>
+            <p>
+              商品名を覚える必要はありません。まずは希望する耐久の目安から、考え方と価格を比べてください。
+            </p>
+          </div>
+          <CoatingSelector />
+          <p className="coating-note">
+            価格は公開料金表に基づくSSサイズの目安です。車種、塗装状態、下地処理で変わります。
+          </p>
+        </section>
+
+        <section className="quality section section-tint" id="quality" aria-labelledby="quality-title">
+          <div className="shell quality-layout">
+            <div className="quality-title-block">
+              <p className="eyebrow">OUR STANDARD</p>
+              <h2 id="quality-title">仕上がりを支える、<br />見えない標準。</h2>
+              <p>
+                強い言葉より、正しい工程。塗装への負担を抑えながら、コーティングが性能を発揮できる下地と環境を整えます。
+              </p>
+              <Link className="text-link" href="/services/polish">磨きへの考え方 <ArrowRightIcon /></Link>
+            </div>
+
+            <div className="quality-grid">
+              <article>
+                <span><SparklesIcon /></span>
+                <h3>専用施工ブース</h3>
+                <p>雨、ほこり、湿度、気温の影響を抑えた環境で施工します。</p>
+              </article>
+              <article>
+                <span><ShieldIcon /></span>
+                <h3>必要最小限の研磨</h3>
+                <p>塗装をむやみに削らず、状態に合う研磨レベルをご提案します。</p>
+              </article>
+              <article>
+                <span><DropletsIcon /></span>
+                <h3>純水で最終仕上げ</h3>
+                <p>ミネラル由来の水ジミを残しにくく、細部まできれいに整えます。</p>
+              </article>
+              <article>
+                <span><CheckIcon /></span>
+                <h3>G’ZOX登録店</h3>
+                <p>複数のG’ZOX商品を扱う公式施工店として登録されています。</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section className="company section" aria-labelledby="company-title">
+          <div className="shell company-layout">
+            <div className="company-copy">
+              <p className="eyebrow">BACKED BY MATSUMOTO OIL</p>
+              <h2 id="company-title">車が必要な山陰で、<br />創業1929年から。</h2>
+              <p>
+                M’sを運営するのは株式会社松本油店。給油、車検・整備、車両販売、保険、レンタカーまで、地域のカーライフを支えてきた会社です。
+              </p>
+              <Link className="button button-secondary" href="/about">
+                運営会社と関連サービス <ArrowRightIcon />
+              </Link>
+            </div>
+            <div className="company-numbers">
+              <article><strong>1929</strong><span>創業</span></article>
+              <article><strong>44.4<small>億円</small></strong><span>公表売上高<br />2025年5月実績</span></article>
+              <article><strong>山陰</strong><span>鳥取・島根の<br />生活と産業を支援</span></article>
+            </div>
+          </div>
+          <div className="car-life-strip shell" aria-label="関連カーライフサービス">
+            {[
+              [CarIcon, "車両販売・買取"],
+              [ShieldIcon, "車検・整備"],
+              [DropletsIcon, "給油・洗車"],
+              [CheckIcon, "自動車保険"],
+            ].map(([Icon, label]) => {
+              const ItemIcon = Icon as typeof CarIcon;
+              return <div key={label as string}><ItemIcon /><span>{label as string}</span></div>;
+            })}
+          </div>
+        </section>
+
+        <section className="access section section-tint" aria-labelledby="access-title">
+          <div className="shell">
+            <div className="section-heading">
+              <div>
+                <p className="eyebrow">ACCESS</p>
+                <h2 id="access-title">米子駅から徒歩約10分。</h2>
+              </div>
+              <p>ANAクラウンプラザホテル米子さま向かい。お車でも公共交通でも立ち寄りやすい場所です。</p>
+            </div>
+            <div className="access-layout">
+              <div className="map-frame">
+                <iframe
+                  title="Remake Studio M’sの地図"
+                  src={SITE.mapEmbedUrl}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+              <div className="access-info">
+                <div className="access-address">
+                  <MapPinIcon />
+                  <div><small>ADDRESS</small><strong>〒{SITE.postalCode}<br />{SITE.address}</strong></div>
+                </div>
+                <div className="hours-grid">
+                  <article>
+                    <span><ClockIcon /></span>
+                    <div><small>M’s 営業時間</small><strong>{SITE.hours}</strong><p>{SITE.closed}</p></div>
+                  </article>
+                  <article>
+                    <span><CarIcon /></span>
+                    <div><small>レンタカー 営業時間</small><strong>{SITE.rentalHours}</strong><p>曜日を問わず営業</p></div>
+                  </article>
+                </div>
+                <div className="access-actions">
+                  <a className="button" href={SITE.mapUrl} target="_blank" rel="noreferrer">地図アプリで開く <ArrowRightIcon /></a>
+                  <Link className="text-link" href="/access">店舗情報を見る <ArrowRightIcon /></Link>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ===== 在庫車トップ カード ===== */}
-        <section
-          aria-label="在庫車トップ"
-          className="rounded-[28px] border border-red-900/60 bg-gradient-to-b from-neutral-900/90 via-black/90 to-neutral-900/90 p-6 shadow-[0_0_50px_rgba(0,0,0,0.9)] md:p-8 min-h-[70vh] flex flex-col justify-between"
-        >
-          {/* 上部ヘッダー */}
-          <header>
-            <div className="text-[10px] font-medium tracking-[0.3em] text-red-300/90">
-              STOCK TOP
-            </div>
-            <h2 className="mt-3 text-2xl font-semibold tracking-wide md:text-[26px]">
-              在庫車トップ
-            </h2>
-            <p className="mt-3 max-w-xl text-[13px] leading-relaxed text-neutral-200/90">
-              現在取り扱い中の在庫車とショップの基本情報をまとめた
-              ベースページです。ここから在庫一覧や車種別の絞り込みへ
-              進むことができます。
-            </p>
-          </header>
-
-          {/* 中央：少し余白のある説明ゾーン（デザイン重視） */}
-          <div className="mt-6 flex flex-1 flex-col items-center justify-center">
-            <p className="max-w-md text-center text-[12px] leading-relaxed text-neutral-300/85">
-              まずは在庫車リストから、気になる1台を探してみてください。
-              輸入車と国産車をまとめて眺められるようにレイアウトしています。
-            </p>
+        <section className="faq section shell" aria-labelledby="faq-title">
+          <div className="faq-heading">
+            <p className="eyebrow">FAQ</p>
+            <h2 id="faq-title">よくあるご質問</h2>
+            <p>予約前に気になりやすい点をまとめました。</p>
           </div>
-
-          {/* 下部：在庫車リストボタン＋タブ風ボタン */}
-          <div className="mt-8 flex flex-col items-center gap-4 pb-1">
-            {/* メインCTA */}
-            <Link
-              href="/inventory"
-              className="inline-flex w-full max-w-sm items-center justify-center rounded-full bg-red-600 px-8 py-3 text-[13px] font-semibold tracking-[0.24em] text-white shadow-[0_0_26px_rgba(248,113,113,0.9)] transition hover:bg-red-500 hover:shadow-[0_0_36px_rgba(248,113,113,1)]"
-            >
-              在庫車リスト
-            </Link>
-
-            {/* サブタブ：輸入車・国産車 / 在庫あり */}
-            <div className="flex flex-wrap justify-center gap-3">
-              <button
-                type="button"
-                className="min-w-[140px] rounded-full border border-neutral-600 bg-black/40 px-5 py-2 text-[11px] font-semibold tracking-[0.18em] text-neutral-100 shadow-inner shadow-black/70"
-              >
-                輸入車・国産車
-              </button>
-              <button
-                type="button"
-                className="min-w-[140px] rounded-full border border-neutral-600 bg-black/40 px-5 py-2 text-[11px] font-semibold tracking-[0.18em] text-neutral-100 shadow-inner shadow-black/70"
-              >
-                在庫あり：{totalStock}台
-              </button>
-            </div>
+          <div className="faq-list">
+            {faqs.map((faq, index) => (
+              <details key={faq.question}>
+                <summary><span>Q{String(index + 1).padStart(2, "0")}</span>{faq.question}<i /></summary>
+                <div><p>{faq.answer}</p></div>
+              </details>
+            ))}
           </div>
         </section>
-
-        {/* ===== COLUMN / 整備記録 セクション ===== */}
-        <section
-          id="layout"
-          className="grid gap-6 md:grid-cols-2 md:gap-7"
-          aria-label="コラムと整備記録簿"
-        >
-          {/* COLUMN */}
-          <article className="rounded-3xl border border-neutral-800/80 bg-gradient-to-b from-neutral-900/80 via-black/85 to-neutral-900/80 p-5 shadow-[0_0_35px_rgba(0,0,0,0.85)] md:p-6">
-            <div className="flex items-center gap-2">
-              <span className="h-[8px] w-[8px] rounded-full bg-red-500" />
-              <span className="text-[10px] font-semibold tracking-[0.3em] text-neutral-300">
-                COLUMN
-              </span>
-            </div>
-            <h3 className="mt-3 text-lg font-semibold tracking-wide md:text-xl">
-              中古車コラム
-            </h3>
-            <p className="mt-3 text-[13px] leading-relaxed text-neutral-200/90">
-              買取査定の裏側や仕入れの基準、展示の工夫など、
-              中古車屋ならではの視点で切り取った短いコラムをまとめていくスペース。
-            </p>
-            <p className="mt-3 text-[11px] text-neutral-400">
-              STORY / MARKET / DETAIL の3つの切り口で、
-              クルマの背景を言葉にしていきます。
-            </p>
-          </article>
-
-          {/* 整備記録簿 */}
-          <article className="rounded-3xl border border-neutral-800/80 bg-gradient-to-b from-neutral-900/80 via-black/85 to-neutral-900/80 p-5 shadow-[0_0_35px_rgba(0,0,0,0.85)] md:p-6">
-            <div className="flex items-center gap-2">
-              <span className="h-[8px] w-[8px] rounded-full bg-red-500" />
-              <span className="text-[10px] font-semibold tracking-[0.3em] text-neutral-300">
-                SERVICE LOG
-              </span>
-            </div>
-            <h3 className="mt-3 text-lg font-semibold tracking-wide md:text-xl">
-              整備記録と入庫履歴
-            </h3>
-            <p className="mt-3 text-[13px] leading-relaxed text-neutral-200/90">
-              納車前点検やオイル交換、消耗品交換、車検整備などの履歴を整理するための
-              セクション。将来的には在庫車ごとのコンディションを
-              一覧で確認できることを目指します。
-            </p>
-            <p className="mt-3 text-[11px] text-neutral-400">
-              「いつ・どこを・どのように整備したか」を記録し、
-              安心して選べる在庫管理につなげていきます。
-            </p>
-          </article>
-        </section>
-
-        {/* ===== このサイトでできること ===== */}
-        <section
-          id="features"
-          className="rounded-3xl border border-neutral-800/80 bg-gradient-to-b from-neutral-900/80 via-black/85 to-neutral-900/80 p-5 shadow-[0_0_35px_rgba(0,0,0,0.85)] md:p-6"
-        >
-          <h3 className="text-base font-semibold tracking-wide md:text-lg">
-            このサイトでできること
-          </h3>
-
-          <ul className="mt-4 space-y-3 text-[13px] leading-relaxed text-neutral-200/90">
-            <li className="flex gap-2">
-              <span className="mt-[5px] h-[6px] w-[6px] rounded-full bg-red-500" />
-              <span>
-                在庫車リストと車両ごとの基本情報を、スマホからでもストレスなく確認できます。
-              </span>
-            </li>
-            <li className="flex gap-2">
-              <span className="mt-[5px] h-[6px] w-[6px] rounded-full bg-red-500" />
-              <span>
-                輸入車と国産車を同じ条件で見比べられるよう、情報の粒度を揃えて整理していきます。
-              </span>
-            </li>
-            <li className="flex gap-2">
-              <span className="mt-[5px] h-[6px] w-[6px] rounded-full bg-red-500" />
-              <span>
-                中古車屋ならではの実体験や視点を交えたコラムで、数字では見えない「背景」も伝えます。
-              </span>
-            </li>
-          </ul>
-
-          <p className="mt-5 text-[11px] text-neutral-500">
-            今後、在庫車の追加 / 比較機能 / 詳細な整備ログの公開など、
-            コンテンツと機能を段階的に拡張していく予定です。
-          </p>
-        </section>
-      </div>
-    </main>
+      </main>
+    </>
   );
 }

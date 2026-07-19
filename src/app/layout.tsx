@@ -3,11 +3,33 @@ import "./globals.css";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { SiteFooter } from "@/components/layout/SiteFooter";
+import { MobileActionBar } from "@/components/layout/MobileActionBar";
+import { SITE } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Auto Collection Bondage | Bondage Digital Independence",
-  description:
-    "鳥取県米子市の自動車販売店 Auto Collection Bondage。軽トラからフェラーリまで、夜の優雅さと昼の温もりが同居するガレージ型ショールーム。",
+  metadataBase: new URL("https://remakestudioms.com"),
+  title: {
+    default: "Remake Studio M’s | 米子の洗車・磨き・コーティング専門店",
+    template: "%s | Remake Studio M’s",
+  },
+  description: SITE.description,
+  keywords: ["米子 コーティング", "米子 洗車", "純水手洗い洗車", "車 磨き", "G'ZOX", "米子 レンタカー"],
+  openGraph: {
+    type: "website",
+    locale: "ja_JP",
+    siteName: SITE.name,
+    title: "Remake Studio M’s | 愛車がきれいになる時間も、あなたは動ける。",
+    description: SITE.description,
+    images: [{ url: "/images/ms-hero.webp", width: 1536, height: 1024, alt: "Remake Studio M’s" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Remake Studio M’s",
+    description: SITE.description,
+    images: ["/images/ms-hero.webp"],
+  },
+  alternates: { canonical: "/" },
 };
 
 type RootLayoutProps = {
@@ -15,13 +37,33 @@ type RootLayoutProps = {
 };
 
 export default function RootLayout({ children }: RootLayoutProps) {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "AutoWash",
+    name: SITE.name,
+    url: "https://remakestudioms.com",
+    telephone: "+81-859-33-2060",
+    image: "https://remakestudioms.com/images/ms-hero.webp",
+    address: {
+      "@type": "PostalAddress",
+      postalCode: SITE.postalCode,
+      addressRegion: "鳥取県",
+      addressLocality: "米子市",
+      streetAddress: "久米町270",
+      addressCountry: "JP",
+    },
+    priceRange: "¥¥",
+    sameAs: [SITE.instagramUrl],
+  };
+
   return (
     <html lang="ja">
-      <body className="min-h-screen bg-[#0a0a0a] text-neutral-100 antialiased">
-        <div className="flex min-h-screen flex-col">
-          <SiteHeader />
-          <main className="flex-1">{children}</main>
-        </div>
+      <body>
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+        <MobileActionBar />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       </body>
     </html>
   );

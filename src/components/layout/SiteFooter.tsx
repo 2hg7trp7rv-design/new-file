@@ -1,62 +1,50 @@
+import Image from "next/image";
 import Link from "next/link";
-import { MAIN_NAV, SITE } from "@/data/site";
 import { ArrowRightIcon, MapPinIcon, PhoneIcon } from "@/components/ui/Icons";
+import { MAIN_NAV, SITE } from "@/data/site";
 
 export function SiteFooter() {
   return (
-    <footer className="site-footer">
-      <div className="footer-cta shell">
-        <div>
-          <p className="eyebrow eyebrow-light">CONTACT</p>
-          <h2>迷ったら、車を見ながら一緒に決めましょう。</h2>
-          <p>車種や状態、保管環境を確認して、必要な施工だけをご提案します。</p>
-        </div>
-        <div className="footer-cta-actions">
-          <a className="button button-light" href={`tel:${SITE.phone}`}>
-            <PhoneIcon />
-            {SITE.phoneDisplay}
-          </a>
-          <a className="text-link text-link-light" href={SITE.reserveUrl} target="_blank" rel="noreferrer">
-            Webで予約する <ArrowRightIcon />
-          </a>
-        </div>
-      </div>
-
-      <div className="footer-main shell">
-        <div className="footer-brand">
-          <Link href="/" className="brand brand-on-dark">
-            <span className="brand-mark">M’s</span>
-            <span className="brand-copy">
-              <strong>Remake Studio M’s</strong>
-              <small>CAR DETAILING STUDIO</small>
-            </span>
+    <footer className="studio-footer">
+      <div className="studio-shell studio-footer__main">
+        <div className="studio-footer__brand">
+          <Link href="/" aria-label="Remake Studio M’s ホーム">
+            <Image src="/images/ms-official-logo.png" alt="Remake Studio M’s" width={300} height={80} />
           </Link>
-          <p>純水手洗い洗車・磨き・カーコーティング専門店</p>
-          <a href={SITE.mapUrl} target="_blank" rel="noreferrer" className="footer-address">
-            <MapPinIcon />
-            〒{SITE.postalCode} {SITE.address}
+          <p>純水手洗い洗車・ボディ磨き・カーコーティング専門店</p>
+          <a href={SITE.mapUrl} target="_blank" rel="noreferrer" data-cta="open_map" data-cta-location="footer">
+            <MapPinIcon />〒{SITE.postalCode} {SITE.address}
+          </a>
+          <a href={`tel:${SITE.phone}`} data-cta="phone" data-cta-location="footer">
+            <PhoneIcon />{SITE.phoneDisplay} <small>9:00–18:00</small>
           </a>
         </div>
 
-        <div className="footer-links">
+        <div className="studio-footer__links">
           <div>
-            <h3>MENU</h3>
-            {MAIN_NAV.map((item) => (
-              <Link key={item.href} href={item.href}>{item.label}</Link>
-            ))}
+            <h2>SITE</h2>
+            {MAIN_NAV.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}
+            <Link href="/about">運営会社</Link>
           </div>
           <div>
-            <h3>SERVICE</h3>
+            <h2>SERVICE</h2>
             <Link href="/services/wash">純水手洗い洗車</Link>
             <Link href="/services/polish">ボディ磨き</Link>
             <Link href="/services/coating">カーコーティング</Link>
+            <Link href="/works">施工事例</Link>
+          </div>
+          <div>
+            <h2>CONTACT</h2>
+            <a href={SITE.reserveUrl} target="_blank" rel="noreferrer" data-cta="reserve" data-cta-location="footer">施工をWeb予約 <ArrowRightIcon /></a>
+            <a href={SITE.contactUrl} target="_blank" rel="noreferrer" data-cta="contact_form" data-cta-location="footer">予約前の問い合わせ <ArrowRightIcon /></a>
+            <a href={SITE.rentalUrl} target="_blank" rel="noreferrer" data-cta="rental_availability" data-cta-location="footer">レンタカー予約 <ArrowRightIcon /></a>
             <a href={SITE.instagramUrl} target="_blank" rel="noreferrer">Instagram</a>
           </div>
         </div>
       </div>
 
-      <div className="footer-bottom shell">
-        <p>運営会社 株式会社松本油店</p>
+      <div className="studio-shell studio-footer__bottom">
+        <div><span>運営会社 株式会社松本油店</span><a href="https://mabr.jp/privacy/" target="_blank" rel="noreferrer">プライバシーポリシー</a></div>
         <p>© Remake Studio M’s</p>
       </div>
     </footer>

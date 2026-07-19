@@ -1,19 +1,19 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { CalendarIcon, CarIcon, ClockIcon, MapPinIcon, PhoneIcon } from "@/components/ui/Icons";
 import { SITE } from "@/data/site";
+import { createPageMetadata } from "@/data/metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "店舗情報・アクセス",
   description: `Remake Studio M’sの住所、営業時間、電話番号。${SITE.address}、米子駅から徒歩約10分。`,
-  alternates: { canonical: "/access" },
-};
+  path: "/access",
+});
 
 export default function AccessPage() {
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <section className="page-hero">
-        <div className="shell breadcrumb"><Link href="/">HOME</Link><span>/</span><span>アクセス</span></div>
+        <nav className="shell breadcrumb" aria-label="パンくず"><Link href="/">HOME</Link><span aria-hidden="true">/</span><span aria-current="page">アクセス</span></nav>
         <div className="shell page-hero-content"><p className="eyebrow">SHOP & ACCESS</p><h1>初めてでも、<br />立ち寄りやすい場所に。</h1><p>米子駅から徒歩約10分。ANAクラウンプラザホテル米子さま向かいです。</p></div>
       </section>
 
@@ -22,8 +22,8 @@ export default function AccessPage() {
         <div className="shop-panel">
           <p className="eyebrow">REMAKE STUDIO M’S YONAGO</p>
           <h2>リメイクスタジオ エムズ 米子</h2>
-          <dl><div><dt><MapPinIcon />住所</dt><dd>〒{SITE.postalCode}<br />{SITE.address}</dd></div><div><dt><ClockIcon />営業時間</dt><dd>{SITE.hours}<small>{SITE.closed}</small></dd></div><div><dt><PhoneIcon />電話</dt><dd><a href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</a></dd></div></dl>
-          <div className="shop-actions"><a className="button" href={SITE.mapUrl} target="_blank" rel="noreferrer">地図アプリで開く</a><a className="button button-secondary" href={SITE.reserveUrl} target="_blank" rel="noreferrer"><CalendarIcon />Web予約</a></div>
+          <dl><div><dt><MapPinIcon />住所</dt><dd>〒{SITE.postalCode}<br />{SITE.address}</dd></div><div><dt><ClockIcon />営業時間</dt><dd>{SITE.hours}<small>{SITE.closed}</small></dd></div><div><dt><PhoneIcon />電話</dt><dd><a href={`tel:${SITE.phone}`} data-cta="phone" data-cta-location="access_page">{SITE.phoneDisplay}</a></dd></div></dl>
+          <div className="shop-actions"><a className="button" href={SITE.mapUrl} target="_blank" rel="noreferrer" data-cta="open_map" data-cta-location="access_page">地図アプリで開く</a><a className="button button-secondary" href={SITE.reserveUrl} target="_blank" rel="noreferrer" data-cta="reserve" data-cta-location="access_page"><CalendarIcon />Web予約</a></div>
         </div>
       </section>
 

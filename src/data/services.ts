@@ -28,10 +28,10 @@ export const SERVICES: Service[] = [
       "高圧予洗い、マイクロムース、羊毛100％のムートン、純水仕上げまで。細部も丁寧に整えます。",
     description:
       "砂やほこりを高圧水で落としてから、たっぷりの泡で汚れを包み込みます。ボディは羊毛100％のムートンでやさしく洗い、最後はミネラルをほとんど含まない純水で仕上げます。",
-    image: "/images/ms-wash.webp",
-    imageAlt: "白い車を純水で丁寧にすすぐ洗車イメージ",
-    startingPrice: "2,500円〜",
-    priceCaption: "M’s施工車 会員価格・税込",
+    image: "/images/wash-hand.jpg",
+    imageAlt: "M’sのスタッフが泡とムートンで実車を手洗いしている様子",
+    startingPrice: "3,500円",
+    priceCaption: "一般料金・SSサイズ・税込",
     highlights: [
       {
         title: "純水仕上げ",
@@ -55,14 +55,14 @@ export const SERVICES: Service[] = [
       { title: "最終確認", text: "ステップ、室内、タイヤ周りまで確認します。" },
     ],
     pricing: {
-      columns: ["サイズ", "M’s施工車 会員", "一般"],
+      columns: ["サイズ", "一般", "M’s施工車 会員"],
       rows: [
-        ["SS", "2,500円", "3,500円"],
-        ["S", "2,700円", "3,700円"],
-        ["M", "2,900円", "3,900円"],
-        ["L", "3,300円", "4,300円"],
-        ["LL", "3,500円", "4,500円"],
-        ["XL", "4,200円", "5,200円"],
+        ["SS", "3,500円", "2,500円"],
+        ["S", "3,700円", "2,700円"],
+        ["M", "3,900円", "2,900円"],
+        ["L", "4,300円", "3,300円"],
+        ["LL", "4,500円", "3,500円"],
+        ["XL", "5,200円", "4,200円"],
       ],
       notes: ["すべて税込価格です。", "車種サイズが不明な場合はご予約時に確認します。"],
     },
@@ -76,9 +76,9 @@ export const SERVICES: Service[] = [
       "塗装状態を見極め、削り過ぎない必要最小限の研磨で、くすみや洗車傷を整えます。",
     description:
       "高価なコーティングでも、下地が整っていなければ性能と美しさは十分に引き出せません。車両状態、予算、保管環境を確認し、軽研磨または鏡面研磨をご提案します。",
-    image: "/images/ms-polish.webp",
-    imageAlt: "専用ブースで塗装面を機械研磨する作業イメージ",
-    startingPrice: "11,000円〜",
+    image: "/images/craft-polish.jpg",
+    imageAlt: "M’sのスタッフが実車の塗装面を機械研磨している様子",
+    startingPrice: "11,000円",
     priceCaption: "LEVEL 1・SSサイズ・税込",
     highlights: [
       {
@@ -127,9 +127,9 @@ export const SERVICES: Service[] = [
       "約1年・2年・3年のM’sオリジナルと、G’ZOXのプレミアムラインから選べます。",
     description:
       "価格や名前だけで決めるのではなく、乗る年数、保管場所、洗車頻度、求める艶や水弾きを伺ってご提案します。経年車のM’sオリジナル料金にはLEVEL 2研磨が含まれます。",
-    image: "/images/ms-hero.webp",
-    imageAlt: "明るい施工ブースで美しく仕上がった白い車のイメージ",
-    startingPrice: "27,500円〜",
+    image: "/images/work-hustler.jpg",
+    imageAlt: "M’s DIA施工後の淡いブルーのスズキ ハスラー",
+    startingPrice: "27,500円",
     priceCaption: "M’s COATING・新車SS・税込",
     highlights: [
       {

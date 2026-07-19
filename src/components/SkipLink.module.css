@@ -1,0 +1,30 @@
+.link {
+  position: fixed;
+  z-index: 10000;
+  inset-block-start: 0.75rem;
+  inset-inline-start: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: #c8102e;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 800;
+  line-height: 1.5;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(calc(-100% - 1.5rem));
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.link:focus,
+.link:focus-visible {
+  opacity: 1;
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link { transition: none; }
+}

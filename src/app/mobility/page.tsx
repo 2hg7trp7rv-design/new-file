@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRightIcon,
@@ -10,19 +9,20 @@ import {
   PhoneIcon,
 } from "@/components/ui/Icons";
 import { SITE } from "@/data/site";
+import { createPageMetadata } from "@/data/metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "施工中の移動・レンタカー",
   description: "M’s店内で受け付けるニコニコレンタカー米子久米町店と、施工時の移動方法をご案内します。",
-  alternates: { canonical: "/mobility" },
-};
+  path: "/mobility",
+});
 
 export default function MobilityPage() {
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <section className="page-hero page-hero-dark">
         <div className="page-hero-orb" />
-        <div className="shell breadcrumb breadcrumb-dark"><Link href="/">HOME</Link><span>/</span><span>レンタカー</span></div>
+        <nav className="shell breadcrumb breadcrumb-dark" aria-label="パンくず"><Link href="/">HOME</Link><span aria-hidden="true">/</span><span aria-current="page">レンタカー</span></nav>
         <div className="shell page-hero-content">
           <p className="eyebrow eyebrow-light">CAR CARE × MOBILITY</p>
           <h1>預けている時間を、<br />待つ時間にしない。</h1>
@@ -66,14 +66,14 @@ export default function MobilityPage() {
               <h3>代車</h3>
               <p>施工時の移動手段として用意があります。台数、車種、料金、利用条件は施工内容と日程によって異なります。</p>
               <ul><li><CheckIcon />施工予約時に要確認</li><li><CheckIcon />台数・車種に限りあり</li><li><CheckIcon />条件は店舗へ相談</li></ul>
-              <a className="text-link" href={`tel:${SITE.phone}`}><PhoneIcon />M’sへ確認する</a>
+              <a className="text-link" href={`tel:${SITE.phone}`} data-cta="phone" data-cta-location="mobility_page"><PhoneIcon />M’sへ確認する</a>
             </article>
             <article className="comparison-featured">
               <p className="card-eyebrow">NICONICO RENT A CAR</p>
               <h3>レンタカー</h3>
               <p>別途料金・予約が必要ですが、用途に合わせて車両クラスや補償を選べます。受付はM’s店内です。</p>
               <ul><li><CheckIcon />8:00–19:00</li><li><CheckIcon />ウィークリー・マンスリー対応</li><li><CheckIcon />高年式・ハイブリッド車も案内</li></ul>
-              <a className="text-link" href={SITE.rentalUrl} target="_blank" rel="noreferrer">公式ページで空車検索 <ExternalLinkIcon /></a>
+              <a className="text-link" href={SITE.rentalUrl} target="_blank" rel="noreferrer" data-cta="rental_availability" data-cta-location="mobility_page">公式ページで空車検索 <ExternalLinkIcon /></a>
             </article>
           </div>
         </div>
@@ -84,7 +84,7 @@ export default function MobilityPage() {
         <div className="rental-info-card">
           <h3>ニコニコレンタカー 米子久米町店</h3>
           <dl><div><dt>受付場所</dt><dd>M’s店内</dd></div><div><dt>営業時間</dt><dd>{SITE.rentalHours}</dd></div><div><dt>電話</dt><dd>{SITE.rentalPhoneDisplay}</dd></div><div><dt>住所</dt><dd>{SITE.address}</dd></div></dl>
-          <a className="button" href={SITE.rentalUrl} target="_blank" rel="noreferrer"><CalendarIcon />空車・料金を確認</a>
+          <a className="button" href={SITE.rentalUrl} target="_blank" rel="noreferrer" data-cta="rental_availability" data-cta-location="mobility_page"><CalendarIcon />空車・料金を確認</a>
         </div>
       </section>
 

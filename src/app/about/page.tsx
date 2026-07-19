@@ -1,18 +1,18 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRightIcon, CarIcon, CheckIcon, DropletsIcon, ShieldIcon, SparklesIcon } from "@/components/ui/Icons";
+import { createPageMetadata } from "@/data/metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "M’sと運営会社について",
   description: "Remake Studio M’sと、運営会社・株式会社松本油店のカーライフ事業をご紹介します。",
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <section className="page-hero">
-        <div className="shell breadcrumb"><Link href="/">HOME</Link><span>/</span><span>私たちについて</span></div>
+        <nav className="shell breadcrumb" aria-label="パンくず"><Link href="/">HOME</Link><span aria-hidden="true">/</span><span aria-current="page">私たちについて</span></nav>
         <div className="shell page-hero-content"><p className="eyebrow">ABOUT US</p><h1>一台のきれいから、<br />地域のカーライフまで。</h1><p>Remake Studio M’sは、株式会社松本油店が運営するカーケア専門ブランドです。</p></div>
       </section>
 

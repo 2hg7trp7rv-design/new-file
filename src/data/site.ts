@@ -1,6 +1,8 @@
 export const SITE = {
   name: "Remake Studio M’s",
   shortName: "M’s",
+  publicUrl: "https://remake-studio-ms.vercel.app",
+  legacyUrl: "https://remakestudioms.com",
   description:
     "鳥取県米子市の純水手洗い洗車・磨き・カーコーティング専門店。店内でニコニコレンタカー米子久米町店の受付も行っています。",
   phone: "0859332060",
@@ -13,6 +15,7 @@ export const SITE = {
   closed: "毎週水曜・第2／第4火曜",
   rentalHours: "8:00–19:00",
   reserveUrl: "https://airrsv.net/remakestudioms/calendar",
+  contactUrl: "https://remakestudioms.com/mswp/contact/",
   rentalUrl:
     "https://www.2525r.com/tottori/yonago/store-01537-001.html",
   instagramUrl: "https://www.instagram.com/remakestudioms/",
@@ -23,8 +26,8 @@ export const SITE = {
 
 export const MAIN_NAV = [
   { label: "サービス", href: "/#services" },
-  { label: "コーティング", href: "/#coating" },
+  { label: "施工事例", href: "/works" },
+  { label: "施工への考え方", href: "/#craft" },
   { label: "レンタカー", href: "/mobility" },
-  { label: "私たちについて", href: "/about" },
   { label: "アクセス", href: "/access" },
 ] as const;
